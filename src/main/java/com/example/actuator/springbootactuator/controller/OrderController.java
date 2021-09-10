@@ -31,7 +31,7 @@ public class OrderController {
     public ResponseEntity<String> createOrder(String token){
     	String response="";
     	if(validarToken(token)) {
-         response = restTemplate.getForObject("http://localhost:8080/api/transaccion/rest/dataTrainee", String.class);    	
+         response = restTemplate.getForObject("http://gateway:8080/api/transaccion/rest/dataTrainee", String.class);    	
         return new ResponseEntity<String>(response, HttpStatus.OK);
     	}else {
     		 return new ResponseEntity<String>(response, HttpStatus.OK);
@@ -47,7 +47,7 @@ public class OrderController {
     public ResponseEntity<String> createOrder2(@RequestBody Object persona, String token){
     	String response="";
     	if(validarToken(token)) {
-    		   response = restTemplate.postForObject("http://localhost:8080/api/transaccion/rest/dataTrainee", persona, String.class); //.getForObject("http://localhost:9095/rest/dataTrainee", String.class);    	
+    		   response = restTemplate.postForObject("http://gateway:8080/api/transaccion/rest/dataTrainee", persona, String.class); //.getForObject("http://localhost:9095/rest/dataTrainee", String.class);    	
     	        return new ResponseEntity<String>(response, HttpStatus.OK);
     	}else {
    		 return new ResponseEntity<String>(response, HttpStatus.OK);
