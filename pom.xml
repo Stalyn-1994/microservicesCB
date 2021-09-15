@@ -18,7 +18,7 @@
 		<java.version>11</java.version>
 	</properties>
 
-		<profiles>
+	<profiles>
 		<profile>
 			<id>dev</id>  
 			<activation>
@@ -35,9 +35,9 @@
 			<id>prod</id>  
 			<properties>
 				<environment>prod</environment>
-				<transacciones>http://localhost:8080/api/transacciones</transacciones>
-				<bancos>http://localhost:8080/api/proveedores</bancos>
-				<proveedores>http://localhost:8080/api/bancos</proveedores>
+				<transacciones>http://gateway:8080/api/transacciones</transacciones>
+				<bancos>http://gateway:8080/api/bancos</bancos>
+				<proveedores>http://gateway:8080/api/proveedores</proveedores>
 			</properties> 
 		</profile>
 	</profiles>
