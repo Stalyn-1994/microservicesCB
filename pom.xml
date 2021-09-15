@@ -35,9 +35,9 @@
 			<id>prod</id>  
 			<properties>
 				<environment>prod</environment>
-				<transacciones>http://gateway-ip-address:8080/api/transacciones</transacciones>
-				<bancos>http://gateway-ip-address:8080/api/bancos</bancos>
-				<proveedores>http://gateway-ip-address:8080/api/proveedores</proveedores>
+				<transacciones>http://3.86.92.234:8080/api/transacciones</transacciones>
+				<bancos>http://3.86.92.234:8080/api/bancos</bancos>
+				<proveedores>http://3.86.92.234:8080/api/proveedores</proveedores>
 			</properties> 
 		</profile>
 		<profile>
