@@ -18,6 +18,30 @@
 		<java.version>11</java.version>
 	</properties>
 
+		<profiles>
+		<profile>
+			<id>dev</id>  
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation> 	
+			<properties>
+				<environment>dev</environment>
+				<transacciones>http://localhost:8080/api/transacciones</transacciones>
+				<bancos>http://localhost:8080/api/bancos</bancos>
+				<proveedores>http://localhost:8080/api/proveedores</proveedores>
+			</properties> 
+		</profile>
+		<profile>
+			<id>prod</id>  
+			<properties>
+				<environment>prod</environment>
+				<transacciones>http://localhost:8080/api/transacciones</transacciones>
+				<bancos>http://localhost:8080/api/proveedores</bancos>
+				<proveedores>http://localhost:8080/api/bancos</proveedores>
+			</properties> 
+		</profile>
+	</profiles>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -70,6 +94,14 @@
 	</dependencies>
 
 	<build>
+
+		<resources>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src\main\resources</directory>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

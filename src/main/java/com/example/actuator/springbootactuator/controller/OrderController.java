@@ -1,6 +1,7 @@
 package com.example.actuator.springbootactuator.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +23,15 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
 public class OrderController {
 
+	@Value("${transacciones.uri}")
+	private String transacciones_uri;
+
+	@Value("${bancos.uri}")
+	private String bancos_uri;
+
+	@Value("${proveedores.uri}")
+	private String proveedores_uri;
+
     private static final String ORDER_SERVICE = "orderService";
     @Autowired
     private RestTemplate restTemplate;
@@ -36,7 +46,7 @@ public class OrderController {
     public ResponseEntity<String> createOrder(String token){
     	String response="";
     	if(validarToken(token)) {
-         response = restTemplate.getForObject("http://localhost:8080/api/transacciones", String.class);    	
+         response = restTemplate.getForObject(transacciones_uri, String.class);    	
         return new ResponseEntity<String>(response, HttpStatus.OK);
     	}else {
     		 return new ResponseEntity<String>(response, HttpStatus.OK);
@@ -53,7 +63,7 @@ public class OrderController {
     public ResponseEntity<String> createOrder2(@RequestBody Object persona, String token){
     	String response="";
     	if(validarToken(token)) {
-    		   response = restTemplate.postForObject("http://localhost:8080/api/transacciones", persona, String.class);     	
+    		   response = restTemplate.postForObject(transacciones_uri, persona, String.class);     	
     	        return new ResponseEntity<String>(response, HttpStatus.OK);
     	}else {
    		 return new ResponseEntity<String>(response, HttpStatus.OK);
@@ -72,7 +82,7 @@ public class OrderController {
     public ResponseEntity<String> listBancos(String token){
     	String response="";
     	if(validarTokenBancos(token)) {
-         response = restTemplate.getForObject("http://localhost:8080/api/bancos", String.class);    	
+         response = restTemplate.getForObject(bancos_uri, String.class);    	
         return new ResponseEntity<String>(response, HttpStatus.OK);
     	}else {
     		 return new ResponseEntity<String>(response, HttpStatus.OK);
@@ -91,7 +101,7 @@ public class OrderController {
     public ResponseEntity<String> listTransacciones(String token){
     	String response="";
     	if(validarTokenProveedores(token)) {
-         response = restTemplate.getForObject("http://localhost:8080/api/proveedores", String.class);    	
+         response = restTemplate.getForObject(proveedores_uri, String.class);    	
         return new ResponseEntity<String>(response, HttpStatus.OK);
     	}else {
     		 return new ResponseEntity<String>(response, HttpStatus.OK);
