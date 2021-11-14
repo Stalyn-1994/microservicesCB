@@ -35,9 +35,9 @@
 			<id>prod</id>  
 			<properties>
 				<environment>prod</environment>
-				<transacciones>http://34.224.168.196:8080/api/transacciones</transacciones>
-				<bancos>http://34.224.168.196:8080/api/bancos</bancos>
-				<proveedores>http://34.224.168.196:8080/api/proveedores</proveedores>
+				<transacciones>http://18.191.198.245:8080/api/transacciones</transacciones>
+				<bancos>http://18.191.198.245:8080/api/bancos</bancos>
+				<proveedores>http://18.191.198.245:8080/api/proveedores</proveedores>
 			</properties> 
 		</profile>
 		<profile>
